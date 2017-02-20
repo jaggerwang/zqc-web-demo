@@ -1,0 +1,94 @@
+/**
+ * 在球场
+ * zaiqiuchang.com
+ */
+
+html {
+	font-size: 16px;
+	color: #5e5e5e;
+}
+
+.fs-normal {
+	font-size: 1rem;
+}
+
+.fs-small {
+	font-size: 14px;
+}
+
+.fs-big {
+	font-size: 18px;
+}
+
+.bg-normal {
+	background-color: #ebebeb;
+}
+
+.bg-darker {
+	background-color: #d6d6d6;
+}
+
+.bg-white {
+	background-color: #ffffff;
+}
+
+.bg-op {
+	background-color: rgba(66, 66, 66, 0.8);
+}
+
+.color-normal {
+	color: #5e5e5e;
+}
+
+.color-prompt {
+	color: #929292;
+}
+
+.color-empha {
+	color: #212121;
+}
+
+.color-white {
+	color: #ffffff;
+}
+
+.full {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.spin {
+    animation: 1s infinite linear spin;
+}
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+.top {
+	img {
+		margin-right: 5px;
+		width: 30px;
+		height: 30px;
+	}
+}
+
+.left {
+	.nav {
+		.nav {
+			font-size: 80%;
+			margin-left: 1rem;
+		}
+	}
+}
+
+.main {
+	min-height: 1440px;
+}
