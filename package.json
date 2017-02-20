@@ -1,7 +1,7 @@
 {
-  "name": "react-redux-starter-kit",
-  "version": "3.0.0-alpha.2",
-  "description": "Get started with React, Redux, and React-Router!",
+  "name": "zqc-admin-demo",
+  "version": "1.0.0",
+  "description": "Lite version of zaiqiuchang admin web app.",
   "main": "index.js",
   "engines": {
     "node": ">=4.5.0",
@@ -71,7 +71,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davezuko/react-redux-starter-kit.git"
+    "url": "git+https://github.com/jaggerwang/zqc-admin-demo.git"
   },
   "author": "David Zukowski <david@zuko.me> (http://zuko.me)",
   "license": "MIT",
