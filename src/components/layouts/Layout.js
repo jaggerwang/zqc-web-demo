@@ -30,7 +30,7 @@ class Layout extends Component {
 
     return (
       <div>
-        <div className='top'>
+        <div id='top'>
           <rs.Navbar className='bg-inverse' inverse>
             <div className='container'>
               <rs.NavbarBrand tag={Link} to='/'>
@@ -58,7 +58,7 @@ class Layout extends Component {
 
         <div className='container'>
           <div className='row'>
-            <div className='left col-3 bg-darker'>
+            <div id='left' className='col-3 bg-darker'>
               <rs.Nav className='d-flex flex-column'>
                 <rs.NavItem>
                   <rs.NavLink tag={Link} to='/'>首页</rs.NavLink>
@@ -68,7 +68,7 @@ class Layout extends Component {
               </rs.Nav>
             </div>
 
-            <div className='main col-9 bg-normal'>{children}</div>
+            <div id='main' className='col-9 bg-normal'>{children}</div>
           </div>
         </div>
 

@@ -63,6 +63,7 @@ html {
 .spin {
     animation: 1s infinite linear spin;
 }
+
 @keyframes spin {
     from {
         transform:rotate(0deg);
@@ -72,7 +73,7 @@ html {
     }
 }
 
-.top {
+#top {
 	img {
 		margin-right: 5px;
 		width: 30px;
@@ -80,7 +81,9 @@ html {
 	}
 }
 
-.left {
+#left {
+	min-height: 1080px;
+
 	.nav {
 		.nav {
 			font-size: 80%;
@@ -89,6 +92,5 @@ html {
 	}
 }
 
-.main {
-	min-height: 1440px;
+#main {
 }
