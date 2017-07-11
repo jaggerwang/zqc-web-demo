@@ -6,7 +6,6 @@
 export function userFromCache (object, userId) {
   let user = object.users[userId]
   if (!user) {
-    console.debug(`user ${userId} not in cache`)
     return null
   }
   let avatarFile = null
@@ -26,7 +25,6 @@ export function userFromCache (object, userId) {
 export function postFromCache (object, postId) {
   let post = object.posts[postId]
   if (!post) {
-    console.debug(`post ${postId} not in cache`)
     return null
   }
   let creator = userFromCache(object, post.creatorId)
@@ -62,7 +60,6 @@ export function postLikeFromCache (object, postLike) {
 export function postCommentFromCache (object, postCommentId) {
   let postComment = object.postComments[postCommentId]
   if (!postComment) {
-    console.debug(`postComment ${postCommentId} not in cache`)
     return null
   }
   let creator = userFromCache(object, postComment.creatorId)
@@ -79,7 +76,6 @@ export function postCommentFromCache (object, postCommentId) {
 export function courtFromCache (object, courtId) {
   let court = object.courts[courtId]
   if (!court) {
-    console.debug(`court ${courtId} not in cache`)
     return null
   }
   let stat = courtStatFromCache(object, court.id)
@@ -92,7 +88,6 @@ export function courtFromCache (object, courtId) {
 export function fileFromCache (object, fileId) {
   let file = object.files[fileId]
   if (!file) {
-    console.debug(`file ${fileId} not in cache`)
     return null
   }
   let stat = fileStatFromCache(object, file.id)
@@ -124,7 +119,6 @@ export function fileFavorFromCache (object, fileFavor) {
 export function userStatFromCache (object, userId) {
   let userStat = object.userStats[userId]
   if (!userStat) {
-    console.debug(`userStat ${userId} not in cache`)
     return null
   }
   return userStat
@@ -133,7 +127,6 @@ export function userStatFromCache (object, userId) {
 export function postStatFromCache (object, postId) {
   let postStat = object.postStats[postId]
   if (!postStat) {
-    console.debug(`postStat ${postId} not in cache`)
     return null
   }
   return postStat
@@ -142,7 +135,6 @@ export function postStatFromCache (object, postId) {
 export function courtStatFromCache (object, courtId) {
   let courtStat = object.courtStats[courtId]
   if (!courtStat) {
-    console.debug(`courtStat ${courtId} not in cache`)
     return null
   }
   return courtStat
@@ -151,7 +143,6 @@ export function courtStatFromCache (object, courtId) {
 export function fileStatFromCache (object, fileId) {
   let fileStat = object.fileStats[fileId]
   if (!fileStat) {
-    console.debug(`fileStat ${fileId} not in cache`)
     return null
   }
   return fileStat
