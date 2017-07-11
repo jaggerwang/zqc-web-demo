@@ -1,0 +1,47 @@
+{
+  "name": "zqc-web-demo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
+  },
+  "proxy": {
+    "/api": {
+      "target": "https://api.zaiqiuchang.com",
+      "pathRewrite": {"^/api": ""},
+      "changeOrigin": true
+    }
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "bootstrap": "^4.0.0-alpha.6",
+    "geolib": "^2.0.22",
+    "jquery": "^3.2.1",
+    "react": "^15.6.1",
+    "react-addons-css-transition-group": "^15.6.0",
+    "react-addons-transition-group": "^15.6.0",
+    "react-dom": "^15.6.1",
+    "react-icons": "^2.2.5",
+    "react-redux": "^5.0.5",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
+    "react-scripts": "1.0.10",
+    "reactstrap": "^4.8.0",
+    "redux": "^3.7.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
+    "tether": "^1.4.0",
+    "validate.js": "^0.11.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "http-proxy-middleware": "^0.17.4",
+    "node-sass-chokidar": "0.0.3",
+    "standard": "^10.0.2"
+  }
+}
