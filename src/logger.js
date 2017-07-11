@@ -15,7 +15,7 @@ export class Logger {
 
   debug (...args) {
     if (this.level === 'debug') {
-      console.debug(this.time(), ...args)
+      console.log(this.time(), ...args)
     }
   }
 
