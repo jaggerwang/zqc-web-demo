@@ -7,7 +7,7 @@ import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
-import {Link} from 'react-router-dom'
+import {Route, Link} from 'react-router-dom'
 import * as rs from 'reactstrap'
 
 import * as components from '../'
@@ -26,7 +26,7 @@ class Layout extends Component {
   }
 
   render () {
-    let {children, account} = this.props
+    let {account} = this.props
 
     return (
       <div>
@@ -68,7 +68,10 @@ class Layout extends Component {
               </rs.Nav>
             </div>
 
-            <div id='main' className='col-9 bg-normal'>{children}</div>
+            <div id='main' className='col-9 bg-normal'>
+              <Route path='/home' component={components.Home} />
+              <Route path='/posts' component={components.Posts} />
+            </div>
           </div>
         </div>
 

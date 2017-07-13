@@ -36,15 +36,3 @@ export function fileStat (id) {
 export function fileStats (ids) {
   return getApi('/stat/files', {ids: ids.join(',')})
 }
-
-export function mostPlayedCourtsOfUser ({userId = '', limit = 10}) {
-  return getApi('/stat/mostPlayedCourtsOfUser', {userId, limit})
-}
-
-export function mostPlayedUsersOfCourt ({courtId = '', limit = 10}) {
-  return getApi('/stat/mostPlayedUsersOfCourt', {courtId, limit})
-}
-
-export function mostFavoredFilesOfUser ({userId = '', fileType = 0, limit = 10}) {
-  return getApi('/stat/mostFavoredFilesOfUser', {userId, fileType, limit})
-}

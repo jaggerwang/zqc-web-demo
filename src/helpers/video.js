@@ -3,18 +3,18 @@
  * zaiqiuchang.com
  */
 
-import {parse, format} from 'url'
-import {parse as parsePath, format as formatPath, normalize} from 'path'
+import url from 'url'
+import path from 'path'
 
 import {VIDEO_RATES} from '../const'
 
 export function videoUrl (uri, rate = 'ld') {
   if (uri.startsWith('http')) {
-    let urlParsed = parse(uri)
-    let pathParsed = parsePath(urlParsed.pathname)
-    pathParsed.base = pathParsed.name + '-' + rate + pathParsed.ext
-    urlParsed.pathname = normalize(formatPath(pathParsed))
-    uri = format(urlParsed)
+    let urlParsed = url.parse(uri)
+    urlParsed.pathname = path.dirname(urlParsed.pathname) +
+      path.basename(urlParsed.pathname, path.extname(urlParsed.pathname)) +
+      '-' + rate + path.extname(urlParsed.pathname)
+    uri = url.format(urlParsed)
   }
   return uri
 }
@@ -33,11 +33,11 @@ export function fileVideoUrl (file, rate = 'ld') {
 
 export function videoCover (uri) {
   if (uri.startsWith('http')) {
-    let urlParsed = parse(uri)
-    let pathParsed = parsePath(urlParsed.pathname)
-    pathParsed.base = pathParsed.name + '-cover.jpg'
-    urlParsed.pathname = formatPath(pathParsed)
-    uri = format(urlParsed)
+    let urlParsed = url.parse(uri)
+    urlParsed.pathname = path.dirname(urlParsed.pathname) +
+      path.basename(urlParsed.pathname, path.extname(urlParsed.pathname)) +
+      '-cover.jpg'
+    uri = url.format(urlParsed)
   }
   return uri
 }

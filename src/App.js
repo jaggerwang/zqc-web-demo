@@ -4,8 +4,8 @@
  */
 
 import React, {Component} from 'react'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
 import {Provider} from 'react-redux'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 import store from './store'
 import * as components from './components'
@@ -15,11 +15,11 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <div>
+          <Switch>
             <Route exact path='/' component={components.Bootstrap} />
             <Route path='/login' component={components.Login} />
-            <Route path='/posts' component={components.PostList} />
-          </div>
+            <Route component={components.Layout} />
+          </Switch>
         </Router>
       </Provider>
     )

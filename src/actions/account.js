@@ -10,7 +10,6 @@ import * as actions from './'
 
 export const RESET_ACCOUNT = 'reset_account'
 export const SET_ACCOUNT_USER = 'set_account_user'
-export const SET_ACCOUNT_PERMISSIONS = 'set_account_permissions'
 
 export function resetAccount () {
   return {
@@ -75,25 +74,6 @@ export function isLogined ({cbOk} = {}) {
         }
         if (cbOk) {
           cbOk(user)
-        }
-      })
-      .catch(error => dispatch(actions.handleError(error)))
-  }
-}
-
-export function adminInfo ({cbOk} = {}) {
-  return dispatch => {
-    apis.adminInfo()
-      .then(response => {
-        let {data: {admin}} = response
-        if (admin) {
-          dispatch({
-            type: SET_ACCOUNT_PERMISSIONS,
-            permissions: admin.permissions
-          })
-        }
-        if (cbOk) {
-          cbOk(admin)
         }
       })
       .catch(error => dispatch(actions.handleError(error)))

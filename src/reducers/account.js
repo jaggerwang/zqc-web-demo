@@ -7,7 +7,14 @@ import * as actions from '../actions'
 
 const initialState = {
   id: '',
-  permissions: []
+  city: {
+    code: '',
+    name: '全国'
+  },
+  sport: {
+    code: 'tennis',
+    name: '网球'
+  }
 }
 
 export default (state = initialState, action) => {
@@ -16,12 +23,6 @@ export default (state = initialState, action) => {
     return {
       ...state,
       id
-    }
-  } else if (action.type === actions.SET_ACCOUNT_PERMISSIONS) {
-    let {permissions} = action
-    return {
-      ...state,
-      permissions
     }
   } else if (action.type === actions.RESET ||
     action.type === actions.RESET_ACCOUNT) {

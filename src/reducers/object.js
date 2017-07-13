@@ -6,7 +6,6 @@
 const initialState = {
   users: {},
   posts: {},
-  postComments: {},
   courts: {},
   files: {},
   userStats: {},

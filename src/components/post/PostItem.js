@@ -6,19 +6,17 @@
 import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import * as rs from 'reactstrap'
 import MdPerson from 'react-icons/lib/md/person'
 import MdLocationOn from 'react-icons/lib/md/location-on'
 import MdPlayCircleOutline from 'react-icons/lib/md/play-circle-outline'
 
-import {POST_STATUS_NORMAL} from '../../const'
 import * as helpers from '../../helpers'
 import * as actions from '../../actions'
 import './PostItem.css'
 
 class PostItem extends Component {
   render () {
-    let {post, deletePost, undeletePost} = this.props
+    let {post} = this.props
 
     return (
       <div className='post-item bg-white'>
@@ -65,17 +63,6 @@ class PostItem extends Component {
                 </div>
               </a>
           )}
-        </div>
-
-        <div className='foot d-flex flex-row-reverse'>
-          {post.status === POST_STATUS_NORMAL
-            ? <rs.Button size='sm' color='danger'
-              onClick={event => deletePost(post.id)}
-            >删除</rs.Button>
-            : <rs.Button size='sm' color='success'
-              onClick={event => undeletePost(post.id)}
-            >取消删除</rs.Button>}
-          <rs.Button size='sm'>编辑</rs.Button>
         </div>
       </div>
     )

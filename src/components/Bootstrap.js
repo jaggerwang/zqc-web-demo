@@ -6,21 +6,21 @@
 import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 
 import {VERSION} from '../config'
 import * as actions from '../actions'
-import * as components from './'
 
 class Bootstrap extends Component {
   componentDidMount () {
-    let {history, setStoreVersion, isLogined, adminInfo} = this.props
+    let {history, setStoreVersion, isLogined} = this.props
 
     setStoreVersion(VERSION)
 
     isLogined({
       cbOk: user => {
         if (user) {
-          adminInfo()
+          history.push('/home')
         } else {
           history.push('/login')
         }
@@ -30,19 +30,16 @@ class Bootstrap extends Component {
 
   render () {
     return (
-      <components.Layout>
-        <div className='d-flex justify-content-center'>
-          <h1 className='my-5'>正在启动...</h1>
-        </div>
-      </components.Layout>
+      <div className='d-flex justify-content-center'>
+        <h1 className='my-5'>正在启动...</h1>
+      </div>
     )
   }
 }
 
 function mapStateToProps (state) {
-  let {layout, account} = state
+  let {account} = state
   return {
-    layout,
     account
   }
 }
@@ -51,4 +48,4 @@ function mapDispatchToProps (dispatch) {
   return bindActionCreators(actions, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Bootstrap)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Bootstrap))
