@@ -70,10 +70,11 @@ export function isLogined ({cbOk} = {}) {
       .then(response => {
         let {data: {user}} = response
         if (user) {
-          dispatch(setAccountUser({user}))
-        }
-        if (cbOk) {
-          cbOk(user)
+          dispatch(setAccountUser({user, cbOk}))
+        } else {
+          if (cbOk) {
+            cbOk(user)
+          }
         }
       })
       .catch(error => dispatch(actions.handleError(error)))

@@ -7,9 +7,9 @@ import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
-import * as components from '../'
 import * as actions from '../../actions'
 import * as helpers from '../../helpers'
+import * as cmp from '../'
 
 class Posts extends Component {
   constructor (props) {
@@ -33,11 +33,13 @@ class Posts extends Component {
       .filter(v => v)
 
     return (
-      <div className='post-list d-flex flex-column'>
-        {posts.map(post =>
-          <components.PostItem key={post.id} post={post} />
-        )}
-      </div>
+      <cmp.Layout>
+        <div className='post-list d-flex flex-column'>
+          {posts.map(post =>
+            <cmp.PostItem key={post.id} post={post} />
+          )}
+        </div>
+      </cmp.Layout>
     )
   }
 }

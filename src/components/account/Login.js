@@ -10,6 +10,7 @@ import * as rs from 'reactstrap'
 
 import * as actions from '../../actions'
 import * as helpers from '../../helpers'
+import * as cmp from '../'
 
 import './Login.css'
 
@@ -21,7 +22,7 @@ class Login extends Component {
   }
 
   submit (event) {
-    let {history, input, validateInput, setScreenState, login} = this.props
+    let {history, location, input, validateInput, setScreenState, login} = this.props
 
     setScreenState(this.screenId, {isSubmitted: true})
 
@@ -40,7 +41,10 @@ class Login extends Component {
         mobile,
         email,
         password,
-        cbOk: user => history.push('/')
+        cbOk: user => {
+          let {from} = location.state || {from: {pathname: '/'}}
+          history.replace(from)
+        }
       })
     })
 
@@ -54,66 +58,68 @@ class Login extends Component {
     let {isSubmitted} = screen[this.screenId]
 
     return (
-      <rs.Form id='login-form' className='m-5'>
-        <rs.FormGroup row
-          color={helpers.inputState(errorInput.account, isSubmitted)}>
-          <rs.Label htmlFor='account' sm={2}>帐号</rs.Label>
-          <rs.Col sm={10}>
-            <rs.Input type='text' name='account' id='account'
-              placeholder='请输入手机号或绑定邮箱'
-              state={helpers.inputState(errorInput.account, isSubmitted)}
-              value={account}
-              onChange={event => {
-                saveInput(this.screenId, {
-                  account: event.target.value.trim()
-                })
-                event.preventDefault()
-              }}
-            />
-            {helpers.inputFeedback(errorInput.account)
-              ? <rs.FormFeedback>
-                {helpers.inputFeedback(errorInput.account)}
-              </rs.FormFeedback>
-              : null}
-          </rs.Col>
-        </rs.FormGroup>
-        <rs.FormGroup row
-          color={helpers.inputState(errorInput.password, isSubmitted)}>
-          <rs.Label htmlFor='password' sm={2}>密码</rs.Label>
-          <rs.Col sm={10}>
-            <rs.Input type='password' name='password' id='password'
-              placeholder='请输入密码'
-              state={helpers.inputState(errorInput.password, isSubmitted)}
-              value={password}
-              onChange={event => {
-                saveInput(this.screenId, {
-                  password: event.target.value.trim()
-                })
-                event.preventDefault()
-              }}
-            />
-            {helpers.inputFeedback(errorInput.password)
-              ? <rs.FormFeedback>
-                {helpers.inputFeedback(errorInput.password)}
-              </rs.FormFeedback>
-              : null}
-          </rs.Col>
-        </rs.FormGroup>
-        <rs.FormGroup row>
-          <rs.Col sm={{size: 10, offset: 2}}>
-            <rs.Button type='submit' color='primary'
-              onClick={event => this.submit(event)}>登录</rs.Button>
-            <rs.Button type='reset' className='ml-3'
-              onClick={event => {
-                resetInput(this.screenId)
-                event.preventDefault()
-              }}
-            >
-              重置
-            </rs.Button>
-          </rs.Col>
-        </rs.FormGroup>
-      </rs.Form>
+      <cmp.LayoutNoLogin>
+        <rs.Form id='login-form' className='m-5'>
+          <rs.FormGroup row
+            color={helpers.inputState(errorInput.account, isSubmitted)}>
+            <rs.Label htmlFor='account' sm={2}>帐号</rs.Label>
+            <rs.Col sm={10}>
+              <rs.Input type='text' name='account' id='account'
+                placeholder='请输入手机号或绑定邮箱'
+                state={helpers.inputState(errorInput.account, isSubmitted)}
+                value={account}
+                onChange={event => {
+                  saveInput(this.screenId, {
+                    account: event.target.value.trim()
+                  })
+                  event.preventDefault()
+                }}
+              />
+              {helpers.inputFeedback(errorInput.account)
+                ? <rs.FormFeedback>
+                  {helpers.inputFeedback(errorInput.account)}
+                </rs.FormFeedback>
+                : null}
+            </rs.Col>
+          </rs.FormGroup>
+          <rs.FormGroup row
+            color={helpers.inputState(errorInput.password, isSubmitted)}>
+            <rs.Label htmlFor='password' sm={2}>密码</rs.Label>
+            <rs.Col sm={10}>
+              <rs.Input type='password' name='password' id='password'
+                placeholder='请输入密码'
+                state={helpers.inputState(errorInput.password, isSubmitted)}
+                value={password}
+                onChange={event => {
+                  saveInput(this.screenId, {
+                    password: event.target.value.trim()
+                  })
+                  event.preventDefault()
+                }}
+              />
+              {helpers.inputFeedback(errorInput.password)
+                ? <rs.FormFeedback>
+                  {helpers.inputFeedback(errorInput.password)}
+                </rs.FormFeedback>
+                : null}
+            </rs.Col>
+          </rs.FormGroup>
+          <rs.FormGroup row>
+            <rs.Col sm={{size: 10, offset: 2}}>
+              <rs.Button type='submit' color='primary'
+                onClick={event => this.submit(event)}>登录</rs.Button>
+              <rs.Button type='reset' className='ml-3'
+                onClick={event => {
+                  resetInput(this.screenId)
+                  event.preventDefault()
+                }}
+              >
+                重置
+              </rs.Button>
+            </rs.Col>
+          </rs.FormGroup>
+        </rs.Form>
+      </cmp.LayoutNoLogin>
     )
   }
 }
