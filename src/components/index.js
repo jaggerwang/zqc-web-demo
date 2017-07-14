@@ -3,10 +3,9 @@
  * zaiqiuchang.com
  */
 
-export {default as Bootstrap} from './Bootstrap'
+export {default as App} from './App'
 export {default as Home} from './Home'
 
 export * from './common'
-export * from './layouts'
 export * from './account'
 export * from './post'
