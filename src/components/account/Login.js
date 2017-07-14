@@ -11,6 +11,8 @@ import * as rs from 'reactstrap'
 import * as actions from '../../actions'
 import * as helpers from '../../helpers'
 
+import './Login.css'
+
 class Login extends Component {
   constructor (props) {
     super(props)
@@ -52,7 +54,7 @@ class Login extends Component {
     let {isSubmitted} = screen[this.screenId]
 
     return (
-      <rs.Form className='m-5'>
+      <rs.Form id='login-form' className='m-5'>
         <rs.FormGroup row
           color={helpers.inputState(errorInput.account, isSubmitted)}>
           <rs.Label htmlFor='account' sm={2}>帐号</rs.Label>

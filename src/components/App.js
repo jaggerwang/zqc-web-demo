@@ -43,29 +43,18 @@ class App extends Component {
     let {account} = this.props
     return (
       <div>
-        <div id='top'>
-          <rs.Navbar className='bg-inverse' inverse>
-            <rs.NavbarBrand tag={Link} to='/'>
-              <img src={require('../assets/zqc-icon.png')} alt='' />在球场
-            </rs.NavbarBrand>
-            <rs.Collapse isOpen navbar>
-              <rs.Nav className='ml-auto' navbar>
-                <rs.NavItem>
-                  <rs.NavLink target='_blank' href='https://www.zaiqiuchang.com'>官网</rs.NavLink>
-                </rs.NavItem>
-                <rs.NavItem>
-                  {account.id
-                  ? <rs.NavLink onClick={event => this.logout(event)}>
-                    <rs.Button outline size='sm'>退出</rs.Button>
-                  </rs.NavLink>
-                  : <rs.NavLink tag={Link} to='/login'>
-                    <rs.Button outline color='success' size='sm'>登录</rs.Button>
-                  </rs.NavLink>}
-                </rs.NavItem>
-              </rs.Nav>
-            </rs.Collapse>
-          </rs.Navbar>
-        </div>
+        <rs.Navbar id='top' className='d-flex flex-row justify-content-between bg-inverse' inverse>
+          <rs.NavbarBrand tag={Link} to='/'>
+            <img src={require('../assets/zqc-icon.png')} alt='' />在球场
+          </rs.NavbarBrand>
+          {account.id
+          ? <rs.NavLink onClick={event => this.logout(event)}>
+            <rs.Button outline size='sm'>退出</rs.Button>
+          </rs.NavLink>
+          : <rs.NavLink tag={Link} to='/login'>
+            <rs.Button outline color='success' size='sm'>登录</rs.Button>
+          </rs.NavLink>}
+        </rs.Navbar>
 
         <div className='container'>
           {account.id
@@ -74,7 +63,8 @@ class App extends Component {
               <rs.Nav className='d-flex flex-column'>
                 <rs.NavItem>
                   <rs.NavLink tag={Link} to='/'>首页</rs.NavLink>
-                </rs.NavItem><rs.NavItem>
+                </rs.NavItem>
+                <rs.NavItem>
                   <rs.NavLink tag={Link} to='/posts'>动态列表</rs.NavLink>
                 </rs.NavItem>
               </rs.Nav>
