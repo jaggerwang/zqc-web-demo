@@ -3,15 +3,13 @@
  * zaiqiuchang.com
  */
 
-import * as actions from '../actions'
-
 const initialState = {
   input: {},
   flash: ''
 }
 
 export default (state = initialState, action) => {
-  if (action.type === actions.ERROR_INPUT) {
+  if (action.type === 'error_input') {
     let {screenId, error} = action
     return {
       ...state,
@@ -23,7 +21,7 @@ export default (state = initialState, action) => {
         }
       }
     }
-  } else if (action.type === actions.RESET_ERROR_INPUT) {
+  } else if (action.type === 'reset_error_input') {
     let {screenId} = action
     if (screenId === undefined) {
       return {
@@ -39,14 +37,13 @@ export default (state = initialState, action) => {
         }
       }
     }
-  } else if (action.type === actions.ERROR_FLASH) {
+  } else if (action.type === 'error_flash') {
     let {error} = action
     return {
       ...state,
       flash: error
     }
-  } else if (action.type === actions.RESET ||
-    action.type === actions.RESET_ERROR) {
+  } else if (action.type === 'reset' || action.type === 'reset_error') {
     return initialState
   } else {
     return state

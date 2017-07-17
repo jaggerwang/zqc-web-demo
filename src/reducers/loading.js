@@ -3,8 +3,6 @@
  * zaiqiuchang.com
  */
 
-import * as actions from '../actions'
-
 const initialState = {
   loadingCount: 0,
   prompt: '',
@@ -12,31 +10,30 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  if (action.type === actions.LOADING_START) {
+  if (action.type === 'loading_start') {
     let {prompt} = action
     return {
       ...state,
       loadingCount: (state.loadingCount + 1),
       prompt: prompt || initialState.prompt
     }
-  } else if (action.type === actions.LOADING_END) {
+  } else if (action.type === 'loading_end') {
     return {
       ...state,
       loadingCount: (state.loadingCount - 1),
       prompt: initialState.prompt
     }
-  } else if (action.type === actions.ENABLE_LOADING) {
+  } else if (action.type === 'enable_loading') {
     return {
       ...state,
       enabled: true
     }
-  } else if (action.type === actions.DISABLE_LOADING) {
+  } else if (action.type === 'disable_loading') {
     return {
       ...state,
       enabled: false
     }
-  } else if (action.type === actions.RESET ||
-    action.type === actions.RESET_LOADING) {
+  } else if (action.type === 'reset' || action.type === 'reset_loading') {
     return initialState
   } else {
     return state

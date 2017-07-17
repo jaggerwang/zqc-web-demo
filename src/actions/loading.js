@@ -3,39 +3,33 @@
  * zaiqiuchang.com
  */
 
-export const RESET_LOADING = 'reset_loading'
-export const LOADING_START = 'loading_start'
-export const LOADING_END = 'loading_end'
-export const ENABLE_LOADING = 'enable_loading'
-export const DISABLE_LOADING = 'disable_loading'
-
 export function resetLoading () {
   return {
-    type: RESET_LOADING
+    type: 'reset_loading'
   }
 }
 
 export function loadingStart (prompt) {
   return {
-    type: LOADING_START,
+    type: 'loading_start',
     prompt
   }
 }
 
 export function loadingEnd () {
   return {
-    type: LOADING_END
+    type: 'loading_end'
   }
 }
 
 export function enableLoading () {
   return {
-    type: ENABLE_LOADING
+    type: 'enable_loading'
   }
 }
 
 export function disableLoading () {
   return {
-    type: DISABLE_LOADING
+    type: 'disable_loading'
   }
 }

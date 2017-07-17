@@ -3,8 +3,6 @@
  * zaiqiuchang.com
  */
 
-import * as actions from '../actions'
-
 const initialState = {
   id: '',
   city: {
@@ -18,14 +16,13 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  if (action.type === actions.SET_ACCOUNT_USER) {
+  if (action.type === 'set_account_user') {
     let {id} = action
     return {
       ...state,
       id
     }
-  } else if (action.type === actions.RESET ||
-    action.type === actions.RESET_ACCOUNT) {
+  } else if (action.type === 'reset' || action.type === 'reset_account') {
     return initialState
   } else {
     return state

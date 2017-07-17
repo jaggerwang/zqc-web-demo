@@ -3,25 +3,21 @@
  * zaiqiuchang.com
  */
 
-export const RESET = 'reset'
-export const RESET_STORE = 'reset_store'
-export const SET_STORE_VERSION = 'set_store_version'
-
 export function reset () {
   return {
-    type: RESET
+    type: 'reset'
   }
 }
 
 export function resetStore () {
   return {
-    type: RESET_STORE
+    type: 'reset_store'
   }
 }
 
 export function setStoreVersion (version) {
   return {
-    type: SET_STORE_VERSION,
+    type: 'set_store_version',
     version
   }
 }

@@ -42,7 +42,7 @@ class Layout extends Component {
             <div id='left' className='col-3 bg-darker'>
               <rs.Nav className='d-flex flex-column'>
                 <rs.NavItem>
-                  <rs.NavLink tag={Link} to='/home'>首页</rs.NavLink>
+                  <rs.NavLink tag={Link} to='/'>首页</rs.NavLink>
                 </rs.NavItem>
                 <rs.NavItem>
                   <rs.NavLink tag={Link} to='/posts'>动态列表</rs.NavLink>

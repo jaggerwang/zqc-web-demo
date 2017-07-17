@@ -16,9 +16,8 @@ export default class App extends Component {
       <Provider store={store}>
         <Router>
           <Switch>
-            <Route exact path='/' component={cmp.Bootstrap} />
             <Route path='/login' component={cmp.Login} />
-            <cmp.PrivateRoute path='/home' component={cmp.Home} />
+            <cmp.PrivateRoute exact path='/' component={cmp.Home} />
             <cmp.PrivateRoute path='/posts' component={cmp.Posts} />
           </Switch>
         </Router>

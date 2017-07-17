@@ -3,7 +3,6 @@
  * zaiqiuchang.com
  */
 
-export {default as Bootstrap} from './Bootstrap'
 export {default as Home} from './Home'
 
 export * from './common'

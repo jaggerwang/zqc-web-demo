@@ -12,6 +12,7 @@ import MdPlayCircleOutline from 'react-icons/lib/md/play-circle-outline'
 
 import * as helpers from '../../helpers'
 import * as actions from '../../actions'
+
 import './PostItem.css'
 
 class PostItem extends Component {

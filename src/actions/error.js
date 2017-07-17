@@ -6,27 +6,22 @@
 import logger from '../logger'
 import {InputError, ApiHttpError} from '../error'
 
-export const RESET_ERROR = 'reset_error'
-export const RESET_ERROR_INPUT = 'reset_error_input'
-export const ERROR_INPUT = 'error_input'
-export const ERROR_FLASH = 'error_flash'
-
 export function resetError () {
   return {
-    type: RESET_ERROR
+    type: 'reset_error'
   }
 }
 
 export function resetErrorInput (screenId) {
   return {
-    type: RESET_ERROR_INPUT,
+    type: 'reset_error_input',
     screenId
   }
 }
 
 export function errorInput (screenId, error) {
   return {
-    type: ERROR_INPUT,
+    type: 'error_input',
     screenId,
     error
   }
@@ -35,12 +30,12 @@ export function errorInput (screenId, error) {
 export function errorFlash (error, duration = 3000) {
   return dispatch => {
     dispatch({
-      type: ERROR_FLASH,
+      type: 'error_flash',
       error
     })
     setTimeout(() => {
       dispatch({
-        type: ERROR_FLASH,
+        type: 'error_flash',
         error: ''
       })
     }, duration)

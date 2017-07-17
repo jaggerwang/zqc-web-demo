@@ -3,8 +3,6 @@
  * zaiqiuchang.com
  */
 
-import * as actions from '../actions'
-
 const initialState = {
   Login: {
     account: '',
@@ -13,13 +11,13 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  if (action.type === actions.INPUT) {
+  if (action.type === 'input') {
     let {screenId, input} = action
     return {
       ...state,
       [screenId]: Object.assign({}, state[screenId], input)
     }
-  } else if (action.type === actions.RESET_INPUT) {
+  } else if (action.type === 'reset_input') {
     let {screenId} = action
     if (screenId === undefined) {
       return initialState
@@ -29,7 +27,7 @@ export default (state = initialState, action) => {
         [screenId]: initialState[screenId]
       }
     }
-  } else if (action.type === actions.RESET) {
+  } else if (action.type === 'reset') {
     return initialState
   } else {
     return state

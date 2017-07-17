@@ -3,31 +3,34 @@
  * zaiqiuchang.com
  */
 
-import {ApiResultError, ERROR_CODE_NOT_FOUND,
-  ERROR_CODE_WRONG_PASSWORD} from '../error'
+import {ApiResultError, ERROR_CODE_NOT_FOUND, ERROR_CODE_WRONG_PASSWORD} from '../error'
 import * as apis from '../apis'
 import * as actions from './'
 
-export const RESET_ACCOUNT = 'reset_account'
-export const SET_ACCOUNT_USER = 'set_account_user'
-
 export function resetAccount () {
   return {
-    type: RESET_ACCOUNT
+    type: 'reset_account'
   }
 }
 
 export function setAccountUser ({user, cbOk}) {
   return dispatch => {
-    dispatch(actions.cacheUsers({users: [user]}))
-      .then(users => {
-        let user = users[0]
-        dispatch({type: SET_ACCOUNT_USER, id: user.id})
-        if (cbOk) {
-          cbOk(user)
-        }
-      })
-      .catch(error => dispatch(actions.handleError(error)))
+    if (user) {
+      dispatch(actions.cacheUsers({users: [user]}))
+        .then(users => {
+          let user = users[0]
+          dispatch({type: 'set_account_user', id: user.id})
+          if (cbOk) {
+            cbOk(user)
+          }
+        })
+        .catch(error => dispatch(actions.handleError(error)))
+    } else {
+      dispatch({type: 'set_account_user', id: ''})
+      if (cbOk) {
+        cbOk(null)
+      }
+    }
   }
 }
 
@@ -69,13 +72,7 @@ export function isLogined ({cbOk} = {}) {
     apis.isLogined()
       .then(response => {
         let {data: {user}} = response
-        if (user) {
-          dispatch(setAccountUser({user, cbOk}))
-        } else {
-          if (cbOk) {
-            cbOk(user)
-          }
-        }
+        dispatch(setAccountUser({user, cbOk}))
       })
       .catch(error => dispatch(actions.handleError(error)))
   }

@@ -7,13 +7,10 @@ import valid from 'validate.js'
 
 import * as actions from './'
 
-export const RESET_INPUT = 'reset_input'
-export const INPUT = 'input'
-
 export function resetInput (screenId) {
   return dispatch => {
     dispatch({
-      type: RESET_INPUT,
+      type: 'reset_input',
       screenId
     })
 
@@ -24,7 +21,7 @@ export function resetInput (screenId) {
 export function saveInput (screenId, input) {
   return dispatch => {
     dispatch({
-      type: INPUT,
+      type: 'input',
       screenId,
       input
     })

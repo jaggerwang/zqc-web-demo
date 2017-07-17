@@ -3,19 +3,16 @@
  * zaiqiuchang.com
  */
 
-export const RESET_SCREEN_STATE = 'reset_screen_state'
-export const SET_SCREEN_STATE = 'set_screen_state'
-
 export function resetScreenState (screenId) {
   return {
-    type: RESET_SCREEN_STATE,
+    type: 'reset_screen_state',
     screenId
   }
 }
 
 export function setScreenState (screenId, screenState) {
   return {
-    type: SET_SCREEN_STATE,
+    type: 'set_screen_state',
     screenId,
     screenState
   }
