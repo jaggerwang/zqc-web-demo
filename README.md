@@ -1,10 +1,10 @@
 # 在球场Web应用Demo
 
-本应用可作为开发React Web应用的参考，React用于DOM自动生成，Redux用来管理应用状态，React-router来实现页面导航。
+本应用可作为开发React Web应用的参考，主要用到的第三方库包括React、Redux和React-Router。
 
 ## 开发环境
 
-开发环境使用 [Create React App](https://github.com/facebookincubator/create-react-app) 工具来创建，使用Webpack来转换和打包代码，支持ES6和JSX语法，允许在代码里引入CSS和图片资源文件，并提供了一个开发用的Dev Server。
+开发环境由 [Create React App](https://github.com/facebookincubator/create-react-app) 工具创建，使用Webpack来转换和打包代码，支持ES6和JSX语法，允许在JS代码里直接引用CSS和图片资源文件，并提供了一个开发用的Dev Server。
 
 ## 编码规范
 
@@ -14,7 +14,7 @@
 
 |库名|用途|
 |-------|-----------|
-|[react](https://github.com/facebook/react)|React|
+|[react](https://github.com/facebook/react)|DOM生成和更新|
 |[redux](http://redux.js.org/)|应用状态管理|
 |[react-router](https://github.com/ReactTraining/react-router)|页面导航|
 |[reactstrap](https://github.com/reactstrap/reactstrap)|Bootstrap页面布局|
@@ -55,6 +55,13 @@ zqc-web-app
 > npm start
 ```
 上面的命令将启动一个Dev Server，并自动在浏览器里打开应用。
+
+## 测试
+
+```
+> cd zqc-app-demo
+> npm test
+```
 
 ## 打包
 
