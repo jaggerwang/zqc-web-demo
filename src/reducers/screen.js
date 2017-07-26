@@ -10,13 +10,13 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  if (action.type === 'set_screen_state') {
+  if (action.type === 'SET_SCREEN_STATE') {
     let {screenId, screenState} = action
     return {
       ...state,
       [screenId]: Object.assign({}, state[screenId], screenState)
     }
-  } else if (action.type === 'reset_screen_state') {
+  } else if (action.type === 'RESET_SCREEN_STATE') {
     let {screenId} = action
     if (screenId === undefined) {
       return initialState
@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
         [screenId]: initialState[screenId]
       }
     }
-  } else if (action.type === 'reset') {
+  } else if (action.type === 'RESET') {
     return initialState
   } else {
     return state

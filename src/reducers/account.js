@@ -16,13 +16,13 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  if (action.type === 'set_account_user') {
+  if (action.type === 'SET_ACCOUNT_USER') {
     let {id} = action
     return {
       ...state,
       id
     }
-  } else if (action.type === 'reset' || action.type === 'reset_account') {
+  } else if (action.type === 'RESET' || action.type === 'RESET_ACCOUNT') {
     return initialState
   } else {
     return state

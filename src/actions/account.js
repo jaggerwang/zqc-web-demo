@@ -9,7 +9,7 @@ import * as actions from './'
 
 export function resetAccount () {
   return {
-    type: 'reset_account'
+    type: 'RESET_ACCOUNT'
   }
 }
 
@@ -19,14 +19,14 @@ export function setAccountUser ({user, cbOk}) {
       dispatch(actions.cacheUsers({users: [user]}))
         .then(users => {
           let user = users[0]
-          dispatch({type: 'set_account_user', id: user.id})
+          dispatch({type: 'SET_ACCOUNT_USER', id: user.id})
           if (cbOk) {
             cbOk(user)
           }
         })
         .catch(error => dispatch(actions.handleError(error)))
     } else {
-      dispatch({type: 'set_account_user', id: ''})
+      dispatch({type: 'SET_ACCOUNT_USER', id: ''})
       if (cbOk) {
         cbOk(null)
       }

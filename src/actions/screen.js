@@ -5,14 +5,14 @@
 
 export function resetScreenState (screenId) {
   return {
-    type: 'reset_screen_state',
+    type: 'RESET_SCREEN_STATE',
     screenId
   }
 }
 
 export function setScreenState (screenId, screenState) {
   return {
-    type: 'set_screen_state',
+    type: 'SET_SCREEN_STATE',
     screenId,
     screenState
   }

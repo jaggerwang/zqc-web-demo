@@ -9,7 +9,7 @@ import * as actions from './'
 
 export function resetPost () {
   return {
-    type: 'reset_post'
+    type: 'RESET_POST'
   }
 }
 
@@ -35,9 +35,9 @@ export function postsOfCity ({cityCode = '', offset = '', cbOk, cbFail,
         let postIds = posts.filter(v => v.status === POST_STATUS_NORMAL)
           .map(v => v.id)
         if (offset === '') {
-          dispatch({type: 'set_posts_of_city', cityCode, postIds})
+          dispatch({type: 'SET_POSTS_OF_CITY', cityCode, postIds})
         } else {
-          dispatch({type: 'append_posts_of_city', cityCode, postIds})
+          dispatch({type: 'APPEND_POSTS_OF_CITY', cityCode, postIds})
         }
         if (cbOk) {
           cbOk(posts)
