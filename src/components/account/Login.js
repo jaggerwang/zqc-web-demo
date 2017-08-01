@@ -7,9 +7,9 @@ import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as rs from 'reactstrap'
+import {reduxForm, Field} from 'redux-form'
 
 import * as actions from '../../actions'
-import * as helpers from '../../helpers'
 import * as cmp from '../'
 
 import './Login.css'
@@ -21,116 +21,80 @@ class Login extends Component {
     this.screenId = props.screenId || 'Login'
   }
 
-  submit (event) {
-    let {history, location, input, validateInput, setScreenState, login} = this.props
+  submit (values) {
+    let {location, history, login} = this.props
+    let {account, password} = values
 
-    setScreenState(this.screenId, {isSubmitted: true})
-
-    validateInput(this.screenId, input[this.screenId], () => {
-      let {account, password} = input[this.screenId]
-      let username, mobile, email
-      if (account.match(/^\d+$/) !== null) {
-        mobile = account
-      } else if (account.match(/^.+@.+$/) !== null) {
-        email = account
-      } else {
-        username = account
+    let username, mobile, email
+    if (account.match(/^\d+$/) !== null) {
+      mobile = account
+    } else if (account.match(/^.+@.+$/) !== null) {
+      email = account
+    } else {
+      username = account
+    }
+    login({
+      username,
+      mobile,
+      email,
+      password,
+      cbOk: user => {
+        let {from} = location.state || {from: {pathname: '/'}}
+        history.replace(from)
       }
-      login({
-        username,
-        mobile,
-        email,
-        password,
-        cbOk: user => {
-          let {from} = location.state || {from: {pathname: '/'}}
-          history.replace(from)
-        }
-      })
     })
-
-    event.preventDefault()
   }
 
   render () {
-    let {error, input, screen, saveInput, resetInput} = this.props
-    let errorInput = error.input[this.screenId] || {}
-    let {account, password} = input[this.screenId]
-    let {isSubmitted} = screen[this.screenId]
-
     return (
       <cmp.LayoutNoLogin>
-        <rs.Form id='login-form' className='m-5'>
-          <rs.FormGroup row
-            color={helpers.inputState(errorInput.account, isSubmitted)}>
-            <rs.Label htmlFor='account' sm={2}>帐号</rs.Label>
-            <rs.Col sm={10}>
-              <rs.Input type='text' name='account' id='account'
-                placeholder='请输入手机号或绑定邮箱'
-                state={helpers.inputState(errorInput.account, isSubmitted)}
-                value={account}
-                onChange={event => {
-                  saveInput(this.screenId, {
-                    account: event.target.value.trim()
-                  })
-                  event.preventDefault()
-                }}
-              />
-              {helpers.inputFeedback(errorInput.account)
-                ? <rs.FormFeedback>
-                  {helpers.inputFeedback(errorInput.account)}
-                </rs.FormFeedback>
-                : null}
-            </rs.Col>
-          </rs.FormGroup>
-          <rs.FormGroup row
-            color={helpers.inputState(errorInput.password, isSubmitted)}>
-            <rs.Label htmlFor='password' sm={2}>密码</rs.Label>
-            <rs.Col sm={10}>
-              <rs.Input type='password' name='password' id='password'
-                placeholder='请输入密码'
-                state={helpers.inputState(errorInput.password, isSubmitted)}
-                value={password}
-                onChange={event => {
-                  saveInput(this.screenId, {
-                    password: event.target.value.trim()
-                  })
-                  event.preventDefault()
-                }}
-              />
-              {helpers.inputFeedback(errorInput.password)
-                ? <rs.FormFeedback>
-                  {helpers.inputFeedback(errorInput.password)}
-                </rs.FormFeedback>
-                : null}
-            </rs.Col>
-          </rs.FormGroup>
-          <rs.FormGroup row>
-            <rs.Col sm={{size: 10, offset: 2}}>
-              <rs.Button type='submit' color='primary'
-                onClick={event => this.submit(event)}>登录</rs.Button>
-              <rs.Button type='reset' className='ml-3'
-                onClick={event => {
-                  resetInput(this.screenId)
-                  event.preventDefault()
-                }}
-              >
-                重置
-              </rs.Button>
-            </rs.Col>
-          </rs.FormGroup>
-        </rs.Form>
+        <LoginForm onSubmit={values => this.submit(values)} />
       </cmp.LayoutNoLogin>
     )
   }
 }
 
+const LoginForm = reduxForm({
+  form: 'loginForm'
+})(props => {
+  const {handleSubmit, pristine, submitting, reset} = props
+
+  return (
+    <rs.Form id='login-form' className='m-5' onSubmit={handleSubmit}>
+      <rs.FormGroup row>
+        <rs.Label htmlFor='account' sm={2}>帐号</rs.Label>
+        <rs.Col sm={10}>
+          <Field
+            name='account'
+            component='input'
+            type='text'
+            placeholder='请输入手机号或绑定邮箱'
+          />
+        </rs.Col>
+      </rs.FormGroup>
+      <rs.FormGroup row>
+        <rs.Label htmlFor='password' sm={2}>密码</rs.Label>
+        <rs.Col sm={10}>
+          <Field
+            name='password'
+            component='input'
+            type='password'
+            placeholder='请输入密码'
+          />
+        </rs.Col>
+      </rs.FormGroup>
+      <rs.FormGroup row>
+        <rs.Col sm={{size: 10, offset: 2}}>
+          <rs.Button type='submit' disabled={pristine || submitting} color='primary'>登录</rs.Button>
+          <rs.Button type='reset' disabled={pristine || submitting} onClick={reset} className='ml-3'>重置</rs.Button>
+        </rs.Col>
+      </rs.FormGroup>
+    </rs.Form>
+  )
+})
+
 function mapStateToProps (state) {
-  let {error, input, screen} = state
-  return {
-    error,
-    input,
-    screen
-  }
+  return {}
 }
 
 function mapDispatchToProps (dispatch) {

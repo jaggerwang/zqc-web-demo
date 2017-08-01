@@ -7,11 +7,12 @@ import React, {Component} from 'react'
 import {Provider} from 'react-redux'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
-import store from './store'
 import * as cmp from './components'
 
 export default class App extends Component {
   render () {
+    let {store} = this.props
+
     return (
       <Provider store={store}>
         <Router>

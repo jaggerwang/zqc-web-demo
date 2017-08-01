@@ -4,7 +4,7 @@
  */
 
 const initialState = {
-  version: ''
+  version: undefined
 }
 
 export default (state = initialState, action) => {

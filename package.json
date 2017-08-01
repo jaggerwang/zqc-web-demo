@@ -34,6 +34,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "bootstrap": "^4.0.0-alpha.6",
+    "compare-versions": "^3.0.1",
     "geolib": "^2.0.22",
     "jquery": "^3.2.1",
     "react": "^15.6.1",
@@ -47,7 +48,9 @@
     "react-scripts": "1.0.10",
     "reactstrap": "^4.8.0",
     "redux": "^3.7.1",
+    "redux-form": "^7.0.3",
     "redux-logger": "^3.0.6",
+    "redux-persist": "^4.8.3",
     "redux-thunk": "^2.2.0",
     "tether": "^1.4.0",
     "validate.js": "^0.11.1"
