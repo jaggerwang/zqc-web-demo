@@ -20,7 +20,7 @@ persistStore(
       store.dispatch(actions.reset())
       store.dispatch(actions.setStoreVersion(VERSION))
     }
-    logger.debug('check store version ok')
+    logger.info('check store version ok')
 
     ReactDOM.render(<App store={store} />, document.getElementById('root'))
   },
