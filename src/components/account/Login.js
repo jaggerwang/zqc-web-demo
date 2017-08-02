@@ -62,9 +62,10 @@ const LoginForm = reduxForm({
   return (
     <rs.Form id='login-form' className='m-5' onSubmit={handleSubmit}>
       <rs.FormGroup row>
-        <rs.Label htmlFor='account' sm={2}>帐号</rs.Label>
-        <rs.Col sm={10}>
+        <rs.Label htmlFor='account' sm={3}>帐号：</rs.Label>
+        <rs.Col sm={9}>
           <Field
+            id='account'
             name='account'
             component='input'
             type='text'
@@ -73,9 +74,10 @@ const LoginForm = reduxForm({
         </rs.Col>
       </rs.FormGroup>
       <rs.FormGroup row>
-        <rs.Label htmlFor='password' sm={2}>密码</rs.Label>
-        <rs.Col sm={10}>
+        <rs.Label htmlFor='password' sm={3}>密码：</rs.Label>
+        <rs.Col sm={9}>
           <Field
+            id='password'
             name='password'
             component='input'
             type='password'
@@ -84,7 +86,7 @@ const LoginForm = reduxForm({
         </rs.Col>
       </rs.FormGroup>
       <rs.FormGroup row>
-        <rs.Col sm={{size: 10, offset: 2}}>
+        <rs.Col sm={{size: 9, offset: 3}}>
           <rs.Button type='submit' disabled={pristine || submitting} color='primary'>登录</rs.Button>
           <rs.Button type='reset' disabled={pristine || submitting} onClick={reset} className='ml-3'>重置</rs.Button>
         </rs.Col>
