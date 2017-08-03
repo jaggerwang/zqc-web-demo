@@ -67,7 +67,7 @@ const LoginForm = reduxForm({
           <Field
             id='account'
             name='account'
-            component={cmp.TextField}
+            component={cmp.InputField}
             type='text'
             placeholder='请输入手机号或绑定邮箱'
           />
@@ -79,7 +79,7 @@ const LoginForm = reduxForm({
           <Field
             id='password'
             name='password'
-            component={cmp.TextField}
+            component={cmp.InputField}
             type='password'
             placeholder='请输入密码'
           />
