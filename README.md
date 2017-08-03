@@ -17,6 +17,7 @@
 |[react](https://github.com/facebook/react)|DOM生成和更新|
 |[redux](http://redux.js.org/)|应用状态管理|
 |[react-router](https://github.com/ReactTraining/react-router)|页面导航|
+|[redux-form](https://github.com/erikras/redux-form/)|表单输入保存和提交|
 |[reactstrap](https://github.com/reactstrap/reactstrap)|Bootstrap页面布局|
 
 ## 目录结构
