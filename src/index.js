@@ -15,10 +15,13 @@ persistStore(
   state => {
     logger.info('load state ok', state)
 
-    let {store: {version}} = state || {store: {version: undefined}}
+    let {dispatch, getState} = store
+
+    let {version} = state.store || {}
     if (version === undefined || compareVersions(version, VERSION) < 0) {
-      store.dispatch(actions.reset())
-      store.dispatch(actions.setStoreVersion(VERSION))
+      dispatch(actions.reset())
+      dispatch(actions.setStoreVersion(VERSION))
+      state = getState()
     }
     logger.info('check store version ok')
 
