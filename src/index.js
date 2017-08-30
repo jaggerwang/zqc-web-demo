@@ -25,7 +25,7 @@ persistStore(
     }
     logger.info('check store version ok')
 
-    ReactDOM.render(<App store={store} />, document.getElementById('root'))
+    ReactDOM.render(<App />, document.getElementById('root'))
   },
   error => {
     logger.error('load state failed', error)

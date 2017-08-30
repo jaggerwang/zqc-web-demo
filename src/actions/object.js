@@ -3,7 +3,6 @@
  * zaiqiuchang.com
  */
 
-import * as apis from '../apis'
 import * as helpers from '../helpers'
 
 export function resetObjectCache () {
@@ -116,7 +115,7 @@ export function cacheUserByIds ({userIds, update = false}) {
       userIds = userIds.filter(v => object.users[v] === undefined)
     }
     if (userIds.length > 0) {
-      return apis.userInfos(userIds)
+      return helpers.apiClient.get('user/infos', {params: {ids: userIds.join(',')}})
         .then(response => {
           let {data: {users}} = response
           return dispatch(cacheUsers({users, userIds}))
@@ -207,7 +206,7 @@ export function cachePostByIds ({postIds, update = false}) {
       postIds = postIds.filter(v => object.posts[v] === undefined)
     }
     if (postIds.length > 0) {
-      return apis.postInfos(postIds)
+      return helpers.apiClient.get('post/infos', {params: {ids: postIds.join(',')}})
         .then(response => {
           let {data: {posts}} = response
           return dispatch(cachePosts({posts, postIds}))
@@ -253,7 +252,7 @@ export function cacheCourtByIds ({courtIds, update = false}) {
       courtIds = courtIds.filter(v => object.courts[v] === undefined)
     }
     if (courtIds.length > 0) {
-      return apis.courtInfos(courtIds)
+      return helpers.apiClient.get('court/infos', {params: {ids: courtIds.join(',')}})
         .then(response => {
           let {data: {courts}} = response
           return dispatch(cacheCourts({courts, courtIds}))
@@ -299,7 +298,7 @@ export function cacheFileByIds ({fileIds, update = false}) {
       fileIds = fileIds.filter(v => object.files[v] === undefined)
     }
     if (fileIds.length > 0) {
-      return apis.fileInfos(fileIds)
+      return helpers.apiClient.get('file/infos', {params: {ids: fileIds.join(',')}})
         .then(response => {
           let {data: {files}} = response
           return dispatch(cacheFiles({files, fileIds}))
@@ -332,7 +331,7 @@ export function cacheUserStatByIds ({userStatIds, update = false}) {
       userStatIds = userStatIds.filter(v => object.userStats[v] === undefined)
     }
     if (userStatIds.length > 0) {
-      return apis.userStats(userStatIds)
+      return helpers.apiClient.get('userStats', {params: {ids: userStatIds.join(',')}})
         .then(response => {
           let {data: {stats: userStats}} = response
           return dispatch(cacheUserStats({userStats}))
@@ -365,7 +364,7 @@ export function cachePostStatByIds ({postStatIds, update = false}) {
       postStatIds = postStatIds.filter(v => object.postStats[v] === undefined)
     }
     if (postStatIds.length > 0) {
-      return apis.postStats(postStatIds)
+      return helpers.apiClient.get('postStats', {params: {ids: postStatIds.join(',')}})
         .then(response => {
           let {data: {stats: postStats}} = response
           return dispatch(cachePostStats({postStats}))
@@ -399,7 +398,7 @@ export function cacheCourtStatByIds ({courtStatIds, update = false}) {
         v => object.courtStats[v] === undefined)
     }
     if (courtStatIds.length > 0) {
-      return apis.courtStats(courtStatIds)
+      return helpers.apiClient.get('courtStats', {params: {ids: courtStatIds.join(',')}})
         .then(response => {
           let {data: {stats: courtStats}} = response
           return dispatch(cacheCourtStats({courtStats}))
@@ -432,7 +431,7 @@ export function cacheFileStatByIds ({fileStatIds, update = false}) {
       fileStatIds = fileStatIds.filter(v => object.fileStats[v] === undefined)
     }
     if (fileStatIds.length > 0) {
-      return apis.fileStats(fileStatIds)
+      return helpers.apiClient.get('fileStats', {params: {ids: fileStatIds.join(',')}})
         .then(response => {
           let {data: {stats: fileStats}} = response
           return dispatch(cacheFileStats({fileStats}))

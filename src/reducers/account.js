@@ -16,7 +16,7 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  if (action.type === 'SET_ACCOUNT_USER') {
+  if (action.type === 'SET_ACCOUNT_ID') {
     let {id} = action
     return {
       ...state,

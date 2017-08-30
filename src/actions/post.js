@@ -4,7 +4,7 @@
  */
 
 import {POST_STATUS_NORMAL} from '../const'
-import * as apis from '../apis'
+import {apiClient} from '../helpers'
 import * as actions from './'
 
 export function resetPost () {
@@ -18,7 +18,7 @@ export function postsOfCity ({cityCode = '', offset = '', cbOk, cbFail,
   return (dispatch, getState) => {
     let {account} = getState()
 
-    apis.postsOfCity({
+    apiClient.get('/post/byCity', {
       cityCode,
       sportCode: account.sport.code,
       status: POST_STATUS_NORMAL,

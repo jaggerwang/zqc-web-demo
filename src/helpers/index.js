@@ -3,6 +3,7 @@
  * zaiqiuchang.com
  */
 
+export * from './request'
 export * from './location'
 export * from './time'
 export * from './number'
