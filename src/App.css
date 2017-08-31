@@ -13,11 +13,11 @@ html {
 }
 
 .fs-small {
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .fs-big {
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .bg-normal {
@@ -66,31 +66,9 @@ html {
 
 @keyframes spin {
   from {
-    transform:rotate(0deg);
+    transform: rotate(0deg);
   }
   to {
-    transform:rotate(360deg);
+    transform: rotate(360deg);
   }
-}
-
-#top {
-  img {
-    margin-right: 5px;
-    width: 30px;
-    height: 30px;
-  }
-}
-
-#left {
-  min-height: 1080px;
-
-  .nav {
-    .nav {
-      font-size: 80%;
-      margin-left: 1rem;
-    }
-  }
-}
-
-#main {
 }

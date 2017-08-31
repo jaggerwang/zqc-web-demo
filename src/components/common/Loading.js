@@ -6,10 +6,19 @@
 import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import MdRotateRight from 'react-icons/lib/md/rotate-right'
+import {MdRotateRight} from 'react-icons/lib/md'
+import styled from 'styled-components'
 
 import * as actions from '../../actions'
-import './Loading.css'
+
+const Icon = styled(props => {
+  let {className} = props
+  return (
+    <MdRotateRight className={`spin ${className}`} />
+  )
+})`
+  font-size: 3rem;
+`
 
 class Loading extends Component {
   render () {
@@ -25,7 +34,7 @@ class Loading extends Component {
           className='loading d-flex flex-column align-items-center p-2
             bg-op rounded color-white'
         >
-          <MdRotateRight className='spin' />
+          <Icon />
           {prompt ? <span className='p-1 fs-small'>{prompt}</span> : null}
         </div>
       </div>

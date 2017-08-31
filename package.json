@@ -7,8 +7,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "format": "standard",
     "format:fix": "standard --fix"
   },
@@ -35,31 +33,29 @@
     "axios": "^0.16.2",
     "bootstrap": "^4.0.0-alpha.6",
     "compare-versions": "^3.0.1",
-    "geolib": "^2.0.22",
+    "geolib": "^2.0.23",
     "history": "^4.7.2",
-    "jquery": "^3.2.1",
     "querystring": "^0.2.0",
     "react": "^15.6.1",
     "react-addons-css-transition-group": "^15.6.0",
     "react-addons-transition-group": "^15.6.0",
     "react-dom": "^15.6.1",
     "react-icons": "^2.2.5",
-    "react-redux": "^5.0.5",
-    "react-router": "^4.1.1",
-    "react-router-dom": "^4.1.1",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.6",
-    "react-scripts": "1.0.10",
+    "react-scripts": "^1.0.12",
     "reactstrap": "^4.8.0",
-    "redux": "^3.7.1",
+    "redux": "^3.7.2",
     "redux-form": "^7.0.3",
     "redux-logger": "^3.0.6",
-    "redux-persist": "^4.8.3",
+    "redux-persist": "^4.9.1",
     "redux-thunk": "^2.2.0",
-    "tether": "^1.4.0"
+    "styled-components": "^2.1.2"
   },
   "devDependencies": {
     "http-proxy-middleware": "^0.17.4",
-    "node-sass-chokidar": "0.0.3",
-    "standard": "^10.0.2"
+    "standard": "^10.0.3"
   }
 }
