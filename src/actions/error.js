@@ -3,7 +3,7 @@
  * zaiqiuchang.com
  */
 
-import {push} from 'react-router-redux'
+import {replace} from 'react-router-redux'
 
 import logger from '../logger'
 
@@ -28,7 +28,7 @@ export function errorInput (screenId, error) {
   }
 }
 
-export function errorFlash (error, duration = 3000) {
+export function errorFlash (error, duration = 2000) {
   return dispatch => {
     dispatch({
       type: 'ERROR_FLASH',
@@ -50,7 +50,7 @@ export function handleError (error) {
       if (error.response.status === 200) {
         dispatch(errorFlash(error.message))
       } else if (error.response.status === 401) {
-        dispatch(push('/login'))
+        dispatch(replace('/login'))
       } else {
         dispatch(errorFlash('服务端出错'))
       }

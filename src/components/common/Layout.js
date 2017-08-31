@@ -17,11 +17,10 @@ import './Layout.css'
 class Layout extends Component {
   logout () {
     let {logout} = this.props
-    logout({
-      cbOk: () => {
-        window.location = '/'
-      }
-    })
+    logout()
+      .then(() => {
+        window.location.href = '/'
+      })
   }
 
   render () {

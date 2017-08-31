@@ -13,8 +13,23 @@ export function resetPost () {
   }
 }
 
-export function postsOfCity ({cityCode = '', offset = '', cbOk, cbFail,
-  cbFinish}) {
+export function setPostsOfCity (cityCode, postIds) {
+  return {
+    type: 'SET_POSTS_OF_CITY',
+    cityCode,
+    postIds
+  }
+}
+
+export function appendPostsOfCity (cityCode, postIds) {
+  return {
+    type: 'APPEND_POSTS_OF_CITY',
+    cityCode,
+    postIds
+  }
+}
+
+export function postsOfCity ({cityCode = '', offset = ''}) {
   return (dispatch, getState) => {
     let {account} = getState()
 
@@ -29,29 +44,14 @@ export function postsOfCity ({cityCode = '', offset = '', cbOk, cbFail,
         return dispatch(actions.cachePosts({posts}))
       })
       .then(posts => {
-        if (cbFinish) {
-          cbFinish()
-        }
         let postIds = posts.filter(v => v.status === POST_STATUS_NORMAL)
           .map(v => v.id)
         if (offset === '') {
-          dispatch({type: 'SET_POSTS_OF_CITY', cityCode, postIds})
+          dispatch(setPostsOfCity(cityCode, postIds))
         } else {
-          dispatch({type: 'APPEND_POSTS_OF_CITY', cityCode, postIds})
-        }
-        if (cbOk) {
-          cbOk(posts)
+          dispatch(appendPostsOfCity(cityCode, postIds))
         }
       })
-      .catch(error => {
-        if (cbFinish) {
-          cbFinish()
-        }
-        if (cbFail) {
-          cbFail(error)
-        } else {
-          dispatch(actions.handleError(error))
-        }
-      })
+      .catch(error => dispatch(actions.handleError(error)))
   }
 }

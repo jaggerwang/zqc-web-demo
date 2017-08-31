@@ -20,9 +20,9 @@ export function setAccountId (id) {
   }
 }
 
-export function login ({username, mobile, email, password, cbOk}) {
+export function login ({username, mobile, email, password}) {
   return dispatch => {
-    apiClient.get('/login', {params: {username, mobile, email, password}})
+    return apiClient.get('/login', {params: {username, mobile, email, password}})
       .then(response => {
         let {data: {user}} = response
         if (user) {
@@ -35,9 +35,9 @@ export function login ({username, mobile, email, password, cbOk}) {
         if (users.length > 0) {
           let user = users[0]
           dispatch(setAccountId(user.id))
-          if (cbOk) {
-            cbOk(user)
-          }
+          return user
+        } else {
+          return null
         }
       })
       .catch(error => {
@@ -53,38 +53,11 @@ export function login ({username, mobile, email, password, cbOk}) {
   }
 }
 
-export function logout ({cbOk}) {
+export function logout () {
   return dispatch => {
-    apiClient.get('/logout')
+    return apiClient.get('/logout')
       .then(response => {
         dispatch(actions.reset())
-        if (cbOk) {
-          cbOk()
-        }
-      })
-      .catch(error => dispatch(actions.handleError(error)))
-  }
-}
-
-export function isLogined ({cbOk} = {}) {
-  return dispatch => {
-    apiClient.get('isLogined')
-      .then(response => {
-        let {data: {user}} = response
-        if (user) {
-          return dispatch(actions.cacheUsers({users: [user]}))
-        } else {
-          return []
-        }
-      })
-      .then(users => {
-        if (users.length > 0) {
-          let user = users[0]
-          dispatch(setAccountId(user.id))
-          if (cbOk) {
-            cbOk(user)
-          }
-        }
       })
       .catch(error => dispatch(actions.handleError(error)))
   }

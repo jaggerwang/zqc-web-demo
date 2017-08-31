@@ -37,12 +37,14 @@ class Login extends Component {
       username,
       mobile,
       email,
-      password,
-      cbOk: user => {
-        let {from} = location.state || {from: {pathname: '/'}}
-        history.replace(from)
-      }
+      password
     })
+      .then(user => {
+        if (user) {
+          let {from} = location.state || {from: {pathname: '/'}}
+          history.replace(from)
+        }
+      })
   }
 
   render () {
