@@ -55,8 +55,7 @@
     "redux-logger": "^3.0.6",
     "redux-persist": "^4.8.3",
     "redux-thunk": "^2.2.0",
-    "tether": "^1.4.0",
-    "validate.js": "^0.11.1"
+    "tether": "^1.4.0"
   },
   "devDependencies": {
     "http-proxy-middleware": "^0.17.4",
