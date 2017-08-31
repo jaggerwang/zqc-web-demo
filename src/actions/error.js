@@ -13,21 +13,6 @@ export function resetError () {
   }
 }
 
-export function resetErrorInput (screenId) {
-  return {
-    type: 'RESET_ERROR_INPUT',
-    screenId
-  }
-}
-
-export function errorInput (screenId, error) {
-  return {
-    type: 'ERROR_INPUT',
-    screenId,
-    error
-  }
-}
-
 export function errorFlash (error, duration = 2000) {
   return dispatch => {
     dispatch({
