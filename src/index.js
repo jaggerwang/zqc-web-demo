@@ -18,7 +18,7 @@ persistStore(
     let {dispatch, getState} = store
 
     let {version} = state.store || {}
-    if (version === undefined || compareVersions(version, VERSION) < 0) {
+    if (version === undefined || compareVersions(version, VERSION) !== 0) {
       dispatch(actions.reset())
       dispatch(actions.setStoreVersion(VERSION))
       state = getState()

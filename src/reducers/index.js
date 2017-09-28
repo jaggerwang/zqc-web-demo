@@ -3,7 +3,6 @@
  * zaiqiuchang.com
  */
 
-import {routerReducer as router} from 'react-router-redux'
 import {reducer as form} from 'redux-form'
 
 import {combineReducers} from 'redux'
@@ -15,7 +14,6 @@ import account from './account'
 import post from './post'
 
 export default combineReducers({
-  router,
   form,
   store,
   error,

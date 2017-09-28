@@ -7,13 +7,11 @@ import {applyMiddleware, compose, createStore} from 'redux'
 import thunk from 'redux-thunk'
 import {createLogger} from 'redux-logger'
 import {persistStore as reduxPersistStore, autoRehydrate} from 'redux-persist'
-import {routerMiddleware} from 'react-router-redux'
 
 import {DEBUG} from './config'
-import {history} from './router'
 import reducers from './reducers'
 
-let middlewares = [thunk, routerMiddleware(history)]
+let middlewares = [thunk]
 if (DEBUG) {
   middlewares.push(createLogger({
     duration: true,

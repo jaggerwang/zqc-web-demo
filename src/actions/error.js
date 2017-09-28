@@ -3,8 +3,6 @@
  * zaiqiuchang.com
  */
 
-import {replace} from 'react-router-redux'
-
 import logger from '../logger'
 
 export function resetError () {
@@ -35,7 +33,7 @@ export function handleError (error) {
       if (error.response.status === 200) {
         dispatch(errorFlash(error.message))
       } else if (error.response.status === 401) {
-        dispatch(replace('/login'))
+        window.location.href = '/login'
       } else {
         dispatch(errorFlash('服务端出错'))
       }
