@@ -16,11 +16,11 @@ class Home extends Component {
     let {object, account} = this.props
     let user = helpers.userFromCache(object, account.id)
     return (
-      <cmp.Layout>
+      <cmp.LayoutLogined>
         <div className='d-flex justify-content-center'>
           <h1 className='my-5'>欢迎你，{user.nickname}！</h1>
         </div>
-      </cmp.Layout>
+      </cmp.LayoutLogined>
     )
   }
 }

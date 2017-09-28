@@ -28,11 +28,11 @@ class Posts extends Component {
       .filter(v => v)
 
     return (
-      <cmp.Layout>
+      <cmp.LayoutLogined>
         <div className='post-list d-flex flex-column'>
           {posts.map(post => <Post key={post.id} post={post} />)}
         </div>
-      </cmp.Layout>
+      </cmp.LayoutLogined>
     )
   }
 }

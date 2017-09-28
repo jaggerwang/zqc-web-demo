@@ -73,7 +73,7 @@ const ImageLink = styled(props => {
   margin: 5px;
 `
 
-const Play = styled(props => {
+const PlayIcon = styled(props => {
   let {className} = props
   return (
     <MdPlayCircleOutline className={`color-white ${className}`} />
@@ -83,14 +83,27 @@ const Play = styled(props => {
   opacity: 0.8;
 `
 
+const Play = styled(props => {
+  let {className} = props
+  return (
+    <div className={`d-flex justify-content-center align-items-center ${className}`}>
+      <PlayIcon />
+    </div>
+  )
+})`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+`
+
 const VideoLink = styled(props => {
   let {className, file} = props
   return (
     <a className={`d-block ${className}`} target='_blank' href={helpers.fileVideoUrl(file, 'fhd')}>
       <Image file={file} />
-      <div className='full d-flex justify-content-center align-items-center'>
-        <Play />
-      </div>
+      <Play />
     </a>
   )
 })`

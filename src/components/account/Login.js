@@ -40,9 +40,9 @@ class Login extends Component {
 
   render () {
     return (
-      <cmp.LayoutNoLogin>
+      <cmp.LayoutNotLogined>
         <LoginForm onSubmit={values => this.submit(values)} />
-      </cmp.LayoutNoLogin>
+      </cmp.LayoutNotLogined>
     )
   }
 }

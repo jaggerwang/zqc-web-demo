@@ -25,6 +25,12 @@ persistStore(
     }
     logger.info('check store version ok')
 
+    let {id} = state.account || {}
+    if (id === '' && window.location.pathname !== '/login') {
+      window.location.href = '/login'
+      return
+    }
+
     ReactDOM.render(<App />, document.getElementById('root'))
   },
   error => {
