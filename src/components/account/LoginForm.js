@@ -6,17 +6,16 @@
 import React from 'react'
 import * as rs from 'reactstrap'
 import {reduxForm, Field} from 'redux-form'
-import styled from 'styled-components'
 
 import * as cmp from '../'
 
-export default styled(reduxForm({
+export default reduxForm({
   form: 'loginForm'
 })(props => {
-  const {className, handleSubmit, pristine, submitting, reset} = props
+  const {handleSubmit, pristine, submitting, reset} = props
 
   return (
-    <rs.Form className={`m-5 ${className}`} onSubmit={handleSubmit}>
+    <rs.Form className='m-5' style={styles.form} onSubmit={handleSubmit}>
       <rs.FormGroup row>
         <rs.Label htmlFor='account' sm={3}>帐号：</rs.Label>
         <rs.Col sm={9}>
@@ -49,6 +48,10 @@ export default styled(reduxForm({
       </rs.FormGroup>
     </rs.Form>
   )
-}))`
-  width: 400px;
-`
+})
+
+const styles = {
+  form: {
+    width: '400px'
+  }
+}

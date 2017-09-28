@@ -8,34 +8,9 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import * as rs from 'reactstrap'
-import styled from 'styled-components'
 
 import * as actions from '../../actions'
 import * as cmp from '../'
-
-const Logo = styled.img.attrs({
-  src: require('../../assets/zqc-icon.png')
-})`
-  margin-right: 5px;
-  width: 30px;
-  height: 30px;
-`
-
-const Menu = styled(props => {
-  let {className} = props
-  return (
-    <rs.Nav className={`d-flex flex-column ${className}`}>
-      <rs.NavItem>
-        <rs.NavLink tag={Link} to='/'>首页</rs.NavLink>
-      </rs.NavItem>
-      <rs.NavItem>
-        <rs.NavLink tag={Link} to='/posts'>动态列表</rs.NavLink>
-      </rs.NavItem>
-    </rs.Nav>
-  )
-})`
-  min-height: 1080px;
-`
 
 class Layout extends Component {
   logout () {
@@ -54,7 +29,7 @@ class Layout extends Component {
         <div>
           <rs.Navbar className='d-flex flex-row justify-content-between bg-inverse' inverse>
             <rs.NavbarBrand tag={Link} to='/'>
-              <Logo />在球场
+              <img alt='' src={require('../../assets/zqc-icon.png')} style={styles.logo} />在球场
             </rs.NavbarBrand>
 
             <rs.NavLink onClick={event => this.logout(event)}>
@@ -65,7 +40,14 @@ class Layout extends Component {
           <div className='container'>
             <div className='row'>
               <div className='col-3 bg-darker'>
-                <Menu />
+                <rs.Nav className='d-flex flex-column' style={styles.menu}>
+                  <rs.NavItem>
+                    <rs.NavLink tag={Link} to='/'>首页</rs.NavLink>
+                  </rs.NavItem>
+                  <rs.NavItem>
+                    <rs.NavLink tag={Link} to='/posts'>动态列表</rs.NavLink>
+                  </rs.NavItem>
+                </rs.Nav>
               </div>
 
               <div id='main' className='col-9 bg-normal'>
@@ -90,5 +72,15 @@ function mapDispatchToProps (dispatch) {
   return bindActionCreators(actions, dispatch)
 }
 
-export default styled(connect(mapStateToProps, mapDispatchToProps)(Layout))`
-`
+export default connect(mapStateToProps, mapDispatchToProps)(Layout)
+
+const styles = {
+  logo: {
+    marginRight: '5px',
+    width: '30px',
+    height: '30px'
+  },
+  menu: {
+    minHeight: '1080px'
+  }
+}
