@@ -8,7 +8,6 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
 import * as actions from '../../actions'
-import * as cmp from '../'
 import LoginForm from './LoginForm'
 
 class Login extends Component {
@@ -33,16 +32,14 @@ class Login extends Component {
       .then(user => {
         if (user) {
           let {from} = location.state || {from: {pathname: '/'}}
-          history.replace(from)
+          history.push(from)
         }
       })
   }
 
   render () {
     return (
-      <cmp.LayoutNotLogined>
-        <LoginForm onSubmit={values => this.submit(values)} />
-      </cmp.LayoutNotLogined>
+      <LoginForm onSubmit={values => this.submit(values)} />
     )
   }
 }

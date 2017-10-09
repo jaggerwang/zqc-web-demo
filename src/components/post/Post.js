@@ -17,11 +17,11 @@ export default props => {
         <img alt='' src={helpers.userAvatarUrl(post.creator)} style={styles.avatar} />
 
         <div className='w-100'>
-          <div className={`d-flex justify-content-between`}>
+          <div className='d-flex justify-content-between'>
             <span style={styles.creator}><MdPerson />{post.creator.nickname}</span>
             <span className='fs-small color-prompt' style={styles.createTime}>{helpers.dateText(post.createTime)}</span>
           </div>
-          <div className={`d-flex justify-content-between`}>
+          <div className='d-flex justify-content-between'>
             <span className='fs-small' style={styles.court}><MdLocationOn />{post.court.name}</span>
           </div>
         </div>

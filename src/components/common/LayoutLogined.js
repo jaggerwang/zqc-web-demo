@@ -13,16 +13,8 @@ import * as actions from '../../actions'
 import * as cmp from '../'
 
 class Layout extends Component {
-  logout () {
-    let {logout} = this.props
-    logout()
-      .then(() => {
-        window.location.href = '/'
-      })
-  }
-
   render () {
-    let {children} = this.props
+    let {children, logout} = this.props
 
     return (
       <cmp.Layout>
@@ -32,7 +24,7 @@ class Layout extends Component {
               <img alt='' src={require('../../assets/zqc-icon.png')} style={styles.logo} />在球场
             </rs.NavbarBrand>
 
-            <rs.NavLink onClick={event => this.logout(event)}>
+            <rs.NavLink onClick={e => logout()}>
               <rs.Button outline size='sm'>退出</rs.Button>
             </rs.NavLink>
           </rs.Navbar>

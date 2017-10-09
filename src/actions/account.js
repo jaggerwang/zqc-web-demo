@@ -5,6 +5,7 @@
 
 import {ERROR_CODE_NOT_FOUND, ERROR_CODE_WRONG_PASSWORD} from '../error'
 import {apiClient} from '../helpers'
+import {navToLogin} from '../nav'
 import * as actions from './'
 
 export function resetAccount () {
@@ -57,6 +58,7 @@ export function logout () {
   return dispatch => {
     return apiClient.get('/logout')
       .then(response => {
+        navToLogin()
         dispatch(actions.reset())
       })
       .catch(error => dispatch(actions.handleError(error)))

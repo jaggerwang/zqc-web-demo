@@ -9,7 +9,6 @@ import {connect} from 'react-redux'
 
 import * as actions from '../../actions'
 import * as helpers from '../../helpers'
-import * as cmp from '../'
 import Post from './Post'
 
 class Posts extends Component {
@@ -28,11 +27,9 @@ class Posts extends Component {
       .filter(v => v)
 
     return (
-      <cmp.LayoutLogined>
-        <div className='post-list d-flex flex-column'>
-          {posts.map(post => <Post key={post.id} post={post} />)}
-        </div>
-      </cmp.LayoutLogined>
+      <div className='post-list d-flex flex-column'>
+        {posts.map(post => <Post key={post.id} post={post} />)}
+      </div>
     )
   }
 }
