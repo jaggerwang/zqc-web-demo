@@ -16,5 +16,5 @@ export function replace (path, state) {
 }
 
 export function navToLogin (from) {
-  push('/login', {from: from || history.location})
+  push('/login', {from})
 }

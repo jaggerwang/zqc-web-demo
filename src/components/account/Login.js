@@ -31,8 +31,8 @@ class Login extends Component {
     })
       .then(user => {
         if (user) {
-          let {from} = location.state || {from: {pathname: '/'}}
-          history.push(from)
+          let {from} = location.state || {}
+          history.push(from || {pathname: '/'})
         }
       })
   }
