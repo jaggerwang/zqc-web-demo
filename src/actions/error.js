@@ -4,7 +4,7 @@
  */
 
 import logger from '../logger'
-import {history, navToLogin} from '../nav'
+import {navToLogin} from '../nav'
 
 export function resetError () {
   return {
@@ -34,7 +34,7 @@ export function handleError (error) {
       if (error.response.status === 200) {
         dispatch(errorFlash(error.message))
       } else if (error.response.status === 401) {
-        navToLogin(history.location)
+        navToLogin()
       } else {
         dispatch(errorFlash('服务端出错'))
       }

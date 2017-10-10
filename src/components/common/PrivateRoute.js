@@ -11,13 +11,16 @@ import * as actions from '../../actions'
 
 class PrivateRoute extends Component {
   render () {
-    let {account, component: Component, ...props} = this.props
+    let {account, component: Component, ...rest} = this.props
     return (
-      <Route {...props} render={props => (
-        account.id
-        ? <Component {...props} />
-        : <Redirect to={{pathname: '/login', state: {from: props.location}}} />
-      )} />
+      <Route
+        {...rest}
+        render={props => (
+          account.id
+          ? <Component {...props} />
+          : <Redirect to={{pathname: '/login', state: {from: props.location}}} />
+        )}
+      />
     )
   }
 }

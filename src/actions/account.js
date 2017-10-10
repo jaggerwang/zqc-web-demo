@@ -58,7 +58,7 @@ export function logout () {
   return dispatch => {
     return apiClient.get('/logout')
       .then(response => {
-        navToLogin()
+        navToLogin({pathname: '/'})
         dispatch(actions.reset())
       })
       .catch(error => dispatch(actions.handleError(error)))

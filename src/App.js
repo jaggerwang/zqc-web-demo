@@ -16,19 +16,19 @@ import './App.css'
 const RouteNotLogined = ({component: Component, ...rest}) =>
   <Route
     {...rest}
-    render={matchProps =>
+    render={props =>
       <cmp.LayoutNotLogined>
-        <Component {...matchProps} />
+        <Component {...props} />
       </cmp.LayoutNotLogined>
     }
   />
 
 const RouteLogined = ({component: Component, ...rest}) =>
-  <Route
+  <cmp.PrivateRoute
     {...rest}
-    render={matchProps =>
+    component={props =>
       <cmp.LayoutLogined>
-        <Component {...matchProps} />
+        <Component {...props} />
       </cmp.LayoutLogined>
     }
   />
